@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Formulario de Información</title>
+</head>
+<body>
+    <h1>Formulario de Información</h1>
+    <form id="infoForm" method="GET" action="screen2.php" onsubmit="return validarForm()">
+        <label for="dni">DNI:</label>
+        <input type="text" id="dni" name="dni" required><br><br>
+        
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required><br><br>
+        
+        <label for="apellido">Apellido:</label>
+        <input type="text" id="apellido" name="apellido" required><br><br>
+        
+        <input type="submit" value="Enviar">
+    </form>
+    <script>
+        function validarForm() {
+            var dni = document.getElementById('dni').value;
+            var nombre = document.getElementById('nombre').value;
+            var apellido = document.getElementById('apellido').value;
+
+            var comprobarDni = /^[0-9]{8}[A-Z]$/;
+            var comprobarNombre = /^[A-Za-z]+$/;
+
+            if (!comprobarDni.test(dni)) {
+                alert('DNI inválido. Debe tener 8 dígitos seguidos de una letra mayúscula.');
+                return false;
+            }
+
+            if (!comprobarNombre.test(nombre)) {
+                alert('Nombre inválido. Solo se permiten letras.');
+                return false;
+            }
+
+            if (!comprobarNombre.test(apellido)) {
+                alert('Apellido inválido. Solo se permiten letras.');
+                return false;
+            }
+
+            return true;
+        }
+    </script>
+</body>
+</html>
